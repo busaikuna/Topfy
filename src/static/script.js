@@ -1,5 +1,3 @@
-const topfyManager = new TopfyManager()
-
 class TopfyApp {
   constructor() {
     this.manager = topfyManager
@@ -419,3 +417,5 @@ class TopfyApp {
     this.authMessage.className = `message ${type}`
   }
 }
+
+const app = new TopfyApp()
