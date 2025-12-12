@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %> - TOPFY</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <%- include('partials/navbar') %>
+  
+  <div class="container">
+    <div class="library-header">
+      <h1 class="page-title">Music Library</h1>
+      <a href="/music/add" class="btn-primary">Add Music</a>
+    </div>
+    
+    <div class="music-grid">
+      <% musics.forEach(music => { %>
+        <div class="music-card" data-music-id="<%= music.id %>">
+          <div class="music-cover" style="background-image: url('<%= music.coverUrl || '/placeholder.svg?height=200&width=200' %>')"></div>
+          <div class="music-info">
+            <h3 class="music-title"><%= music.title %></h3>
+            <p class="music-artist"><%= music.artist %></p>
+            <div class="music-meta">
+              <span class="music-genre"><%= music.genre %></span>
+              <span class="music-popularity"><%= music.popularity %> plays</span>
+            </div>
+          </div>
+          <% if (currentUser) { %>
+            <button class="btn-play" onclick="playMusic('<%= music.id %>')">Play</button>
+          <% } %>
+        </div>
+      <% }) %>
+    </div>
+  </div>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

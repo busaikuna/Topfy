@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %> - TOPFY</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <%- include('partials/navbar') %>
+  
+  <div class="container">
+    <h1 class="page-title">Add Music to Library</h1>
+    
+    <div class="add-music-container">
+      <div class="api-search-section">
+        <h2 class="section-title">Search from MusicAPI</h2>
+        <div class="search-api-form">
+          <input 
+            type="text" 
+            id="apiSearchInput" 
+            placeholder="Search for a song..." 
+            class="form-input"
+          >
+          <button onclick="searchMusicAPI()" class="btn-primary">Search</button>
+        </div>
+        
+        <div id="apiResults" class="api-results"></div>
+      </div>
+
+      <div class="manual-form-section">
+        <h2 class="section-title">Or Add Manually</h2>
+        <form id="manualMusicForm" class="music-form">
+          <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" id="title" name="title" class="form-input" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="artist">Artist</label>
+            <input type="text" id="artist" name="artist" class="form-input" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="genre">Genre</label>
+            <input type="text" id="genre" name="genre" class="form-input" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="coverUrl">Cover URL</label>
+            <input type="url" id="coverUrl" name="coverUrl" class="form-input">
+          </div>
+          
+          <div class="form-group">
+            <label for="duration">Duration (seconds)</label>
+            <input type="number" id="duration" name="duration" class="form-input">
+          </div>
+          
+          <button type="submit" class="btn-primary btn-full">Add Music</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/main.js"></script>
+  <script src="/js/add-music.js"></script>
+</body>
+</html>

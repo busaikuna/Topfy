@@ -1,0 +1,20 @@
+<nav class="navbar">
+  <div class="nav-container">
+    <a href="/" class="logo">TOPFY</a>
+    
+    <div class="nav-links">
+      <% if (currentUser) { %>
+        <a href="/user/dashboard">Dashboard</a>
+        <a href="/music/explore">Explore</a>
+        <a href="/music/popular">Popular</a>
+        <a href="/music/library">Library</a>
+        <a href="/user/preferences">Preferences</a>
+        <span class="nav-user"><%= currentUser %></span>
+        <a href="/user/logout" class="btn-logout">Logout</a>
+      <% } else { %>
+        <a href="/music/explore">Explore</a>
+        <a href="/user/login" class="btn-login">Login</a>
+      <% } %>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %> - TOPFY</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <%- include('partials/navbar') %>
+  
+  <div class="container">
+    <div class="dashboard-header">
+      <h1 class="page-title">Welcome, <%= user.name %></h1>
+      <a href="/user/preferences" class="btn-secondary">Edit Preferences</a>
+    </div>
+
+    <section class="dashboard-section">
+      <h2 class="section-title">Recommended for You</h2>
+      <% if (recommendations.length > 0) { %>
+        <div class="music-grid">
+          <% recommendations.forEach(music => { %>
+            <div class="music-card" data-music-id="<%= music.id %>">
+              <div class="music-cover" style="background-image: url('<%= music.coverUrl || '/placeholder.svg?height=200&width=200' %>')"></div>
+              <div class="music-info">
+                <h3 class="music-title"><%= music.title %></h3>
+                <p class="music-artist"><%= music.artist %></p>
+                <div class="music-meta">
+                  <span class="music-genre"><%= music.genre %></span>
+                  <span class="music-popularity"><%= music.popularity %> plays</span>
+                </div>
+              </div>
+              <button class="btn-play" onclick="playMusic('<%= music.id %>')">Play</button>
+            </div>
+          <% }) %>
+        </div>
+      <% } else { %>
+        <p class="empty-state">No recommendations yet. Add some genre preferences to get started.</p>
+      <% } %>
+    </section>
+
+    <section class="dashboard-section">
+      <h2 class="section-title">Recent Plays</h2>
+      <% if (history.length > 0) { %>
+        <div class="history-list">
+          <% history.forEach(item => { %>
+            <div class="history-item">
+              <div class="history-cover" style="background-image: url('<%= item.music.coverUrl || '/placeholder.svg?height=60&width=60' %>')"></div>
+              <div class="history-info">
+                <h4 class="history-title"><%= item.music.title %></h4>
+                <p class="history-artist"><%= item.music.artist %></p>
+              </div>
+              <span class="history-time"><%= new Date(item.timestamp).toLocaleString() %></span>
+            </div>
+          <% }) %>
+        </div>
+      <% } else { %>
+        <p class="empty-state">No listening history yet. Start playing some music!</p>
+      <% } %>
+    </section>
+  </div>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>
