@@ -16,7 +16,6 @@ const recommender = new Recommender(library)
 
 // Usuários padrão
 const admin = new Administrator("Admin", "admin@topfy.com", "admin123")
-const listener1 = new Listener("João Silva", "joao@email.com", "123456")
 
 authSystem.registerUser(admin)
 authSystem.registerUser(listener1)
