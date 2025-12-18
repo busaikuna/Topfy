@@ -48,15 +48,6 @@ npm start
 http://localhost:3000
 ```
 
-## Credenciais de Teste
-
-**Administrador:**
-- Email: admin@topfy.com
-- Senha: admin123
-
-**Ouvinte:**
-- Email: joao@email.com
-- Senha: 123456
 
 ## Funcionalidades
 
